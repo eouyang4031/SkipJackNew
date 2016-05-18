@@ -211,11 +211,11 @@ public class SkipJackImpl implements Cipher {
 	
 	}
 
-	private final int g (int w, int count)
+	private final int g (int word, int count)
 	{
 		int g1, g2, g3, g4, g5, g6;
-	    g1 = w >>> 8;
-	    g2  = (w & 0xFF);
+	    g1 = word >>> 8;
+	    g2  = (word & 0xFF);
 	    g3 = FTable[g2  ^ K[count  ] & 0xFF] ^ g1;
 	    g4 = FTable[g3  ^ K[count+1] & 0xFF] ^ g2;
 	    g5 = FTable[g4  ^ K[count+2] & 0xFF] ^ g3;
@@ -224,11 +224,11 @@ public class SkipJackImpl implements Cipher {
 	    return (g5 << 8) + g6;
 	}
 	
-	private final int ginv(int w, int count)
+	private final int ginv(int word, int count)
 	{
 	    int g1, g2, g3, g4, g5, g6;
-	    g5 = w >>> 8;
-	    g6  = (w & 0xFF);
+	    g5 = word >>> 8;
+	    g6  = (word & 0xFF);
 	    g4 = FTable[g5  ^ K[count  ] & 0xFF] ^ g6;
 	    g3 = FTable[g4  ^ K[count-1] & 0xFF] ^ g5;
 	    g2 = FTable[g3  ^ K[count-2] & 0xFF] ^ g4;
